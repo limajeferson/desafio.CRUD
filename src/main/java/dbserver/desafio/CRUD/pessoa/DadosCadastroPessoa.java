@@ -6,6 +6,5 @@ public record DadosCadastroPessoa(
         String nome,
         String dataNascimento,
         String cpf,
-        String email,
         DadosCadastroEndereco endereco) {
 }
