@@ -7,6 +7,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 @Table(name = "pessoas")
 @Entity(name = "Pessoa")
 @Getter
@@ -30,5 +33,10 @@ public class Pessoa {
         this.dataNascimento = pessoa.dataNascimento();
         this.cpf = pessoa.cpf();
         this.endereco = new Endereco(pessoa.endereco());
+    }
+
+    public int getIdade() {
+        LocalDate nascimento = LocalDate.parse(this.dataNascimento);
+        return Period.between(nascimento, LocalDate.now()).getYears();
     }
 }

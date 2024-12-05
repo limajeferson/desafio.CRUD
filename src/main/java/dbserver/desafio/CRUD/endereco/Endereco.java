@@ -1,8 +1,7 @@
 package dbserver.desafio.CRUD.endereco;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import dbserver.desafio.CRUD.pessoa.Pessoa;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +20,11 @@ public class Endereco {
 
     @Enumerated(EnumType.STRING)
     private Estado estado;
+
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
+    private Pessoa pessoa;
+
 
     public Endereco(DadosCadastroEndereco endereco) {
         this.rua = endereco.rua();
